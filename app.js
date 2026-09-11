@@ -32,36 +32,53 @@ if (grid && Array.isArray(window.GGST_PRODUCTS)) {
 const menuBtn = document.getElementById('menuBtn');
 const nav = document.getElementById('nav');
 
+function closeMenu() {
+  if (!nav) return;
+
+  nav.classList.remove('open');
+
+  if (menuBtn) {
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+}
+
 if (menuBtn && nav) {
 
-  // Open / close hamburger menu
   menuBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    nav.classList.toggle('open');
+
+    const isOpen = nav.classList.toggle('open');
+
+    menuBtn.setAttribute(
+      'aria-expanded',
+      isOpen ? 'true' : 'false'
+    );
   });
 
-  // Close menu after clicking any navigation link
   nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      nav.classList.remove('open');
+      closeMenu();
     });
   });
 
-  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (
       nav.classList.contains('open') &&
       !nav.contains(e.target) &&
       !menuBtn.contains(e.target)
     ) {
-      nav.classList.remove('open');
+      closeMenu();
     }
   });
 
-  // Close menu if screen changes from mobile to desktop
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 820) {
-      nav.classList.remove('open');
+    if (window.innerWidth > 900) {
+      closeMenu();
     }
+  });
+
+  window.addEventListener('pageshow', () => {
+    closeMenu();
   });
 }
