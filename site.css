@@ -2,3 +2,12 @@
 .page-hero{padding:64px 0;background:linear-gradient(135deg,#eff6ff,#f0fdfa)}.page-hero h1{font-size:48px}.content{padding:55px 0}.content-card{max-width:900px;border:1px solid var(--line);border-radius:20px;padding:30px}.content h2{margin-top:28px}.content p,.content li{color:#475569}
 @media(max-width:900px){.hero-grid,.trust-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr}.future-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.menu-btn{display:block}nav{display:none;position:absolute;top:74px;left:0;right:0;background:#fff;padding:18px 24px;border-bottom:1px solid var(--line);flex-direction:column}nav.open{display:flex}}
 @media(max-width:620px){.hero{padding:60px 0}.product-grid,.future-grid,.footer-grid{grid-template-columns:1fr}h1{font-size:42px}.page-hero h1{font-size:38px}}
+@media (max-width:900px) {
+  .site-header #nav {
+    display:none;
+  }
+
+  .site-header #nav.open {
+    display:flex;
+  }
+}
